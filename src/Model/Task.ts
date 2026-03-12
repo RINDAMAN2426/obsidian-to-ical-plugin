@@ -72,15 +72,9 @@ export class Task {
   }
 
   public getSummary(): string {
-    const summary = this.summary
-      .replace(/\\/gm, '\\\\')
-      .replace(/\r?\n/gm, '\\n')
-      .replace(/;/gm, '\\;')
-      .replace(/,/gm, '\\,');
-
-    const emoji = getTaskStatusEmoji(this.status);
-
-    return `${emoji} ${summary}`;
+    let summary = this.summary.replace(/\\/gm, "\\\\").replace(/\r?\n/gm, "\\n").replace(/;/gm, "\\;").replace(/,/gm, "\\,");
+    summary = summary.replace(/^\d{1,2}:\d{2}\s*-\s*\d{1,2}:\d{2}\s*/, "");
+    return summary;
   }
 
   public getLocation(): string {
