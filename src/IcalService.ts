@@ -48,6 +48,10 @@ export class IcalService {
       return '';
     }
 
+    if (task.getSummary().trim() === '') {
+      return '';
+    }
+
     let event = '' +
       'BEGIN:VEVENT\r\n' +
       'UID:' + task.getId() + '\r\n' +
@@ -156,6 +160,10 @@ export class IcalService {
   }
 
   private getToDo(task: Task): string {
+    if (task.getSummary().trim() === '') {
+      return '';
+    }
+
     let toDo = '' +
       'BEGIN:VTODO\r\n' +
       'UID:' + task.getId() + '\r\n' +
